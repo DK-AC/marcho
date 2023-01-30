@@ -1,6 +1,7 @@
 @import "vars";
 @import "fonts";
 @import "reset";
+@import "libs";
 @import "global";
 
 .header {
@@ -24,30 +25,35 @@
 
     &__list-link {
         color: $title;
-        padding-bottom: 1px;
+        padding: 0 2px 1px;
         transition: all .3s;
         text-transform: uppercase;
-        @extend %quicksand-400;
+        @extend %roboto-700;
 
         &:hover {
             color: $accent;
             border-bottom: 1px solid $accent;
-            @extend %quicksand-500;
+            @extend %roboto-700;
         }
     }
 
     &__list-link--active {
         color: $accent;
         border-bottom: 1px solid $accent;
-        @extend %quicksand-500;
+        @extend %roboto-700;
     }
 }
 
 .user-nav {
     display: flex;
 
+
     &__link {
         position: relative;
+    }
+
+    &__link + .user-nav__link {
+        padding-left: 25px;
     }
 
     &__num {
@@ -62,11 +68,8 @@
         text-align: center;
         line-height: 20px;
     }
-
-    &__link + .user-nav__link {
-        padding-left: 25px;
-    }
 }
+
 
 .footer {
     background-color: $bg;
@@ -157,14 +160,7 @@
     }
 
     &__form-button {
-        text-transform: uppercase;
-        color: #fff;
-        background-color: $accent;
-        border: none;
-        padding: 12px 26px;
-        cursor: pointer;
-        box-shadow: 0 7px 20px 0 rgba(255, 17, 48, 0.3);
-        @extend %roboto-400;
+        @extend %btn;
     }
 }
 
@@ -182,9 +178,108 @@
     }
 
     &__accept-img + .footer-bottom__accept-img {
-        //margin-left: 25px;
+        margin-left: 25px;
+    }
+}
+
+
+.top-slider {
+    background-color: $bg;
+    background-image: url("../images/sliderBg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 65px 0 45px;
+
+    &__container {
+        max-width: 1560px;
     }
 
+    &__content {
+        padding-left: 175px;
+        padding-top: 125px;
+    }
+
+    &__item {
+        display: flex !important;
+        justify-content: space-between;
+    }
+
+    &__title {
+        width: 670px;
+        color: $title;
+        font-size: 58px;
+        line-height: 68px;
+        margin-bottom: 35px;
+        @extend %roboto-700;
+    }
+
+    &__text {
+        width: 470px;
+        margin-bottom: 55px;
+    }
+
+    &__link {
+        padding: 14px 36px;
+        @extend %btn;
+    }
+
+    .slick-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: -70px;
+
+        li {
+            padding: 0 5px;
+            line-height: 0;
+
+            button {
+                padding: 0;
+                font-size: 0;
+                background-color: transparent;
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                border: 1px solid transparent;
+                position: relative;
+                cursor: pointer;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 6px;
+                    height: 6px;
+                    background-color: $default;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            &.slick-active {
+                button {
+                    border-color: $accent;
+
+                    &::before {
+                        background-color: $accent;
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+.circle {
+    border-width: 1px;
+    border-color: rgb(254, 62, 87);
+    border-style: solid;
+    position: absolute;
+    left: 898px;
+    top: 740px;
+    width: 29px;
+    height: 29px;
+    z-index: 470;
+}
+
 
 @import "media";
